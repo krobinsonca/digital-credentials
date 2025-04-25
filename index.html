@@ -5,66 +5,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital Credentials Presentation</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Arial', sans-serif; }
-        .slide { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 4rem; }
-        .bg-slide-1 { background-color: #e0f2fe; }
-        .bg-slide-2 { background-color: #bae6fd; }
-        .bg-slide-3 { background-color: #7dd3fc; }
-        .bg-slide-4 { background-color: #38bdf8; }
-        .bg-slide-5 { background-color: #0ea5e9; }
-        h2 { line-height: 1.2; }
-        ul { max-width: 900px; }
-        li { margin-bottom: 1rem; }
+        body { font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; background: #f3f4f6; }
+        .slide {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem;
+            background: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+            transition: background 0.5s ease;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 1000px;
+            width: 100%;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.6s ease forwards;
+        }
+        .bg-slide-1 { --bg-start: #dbeafe; --bg-end: #93c5fd; }
+        .bg-slide-2 { --bg-start: #bfdbfe; --bg-end: #60a5fa; }
+        .bg-slide-3 { --bg-start: #93c5fd; --bg-end: #3b82f6; }
+        .bg-slide-4 { --bg-start: #60a5fa; --bg-end: #2563eb; color: #f0f9ff; }
+        .bg-slide-5 { --bg-start: #3b82f6; --bg-end: #1e3a8a; color: #f0f9ff; }
+        h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        h2 { font-size: 2.5rem; font-weight: 600; margin-bottom: 1.5rem; }
+        p, li { font-size: 1.25rem; line-height: 1.6; }
+        ul { list-style: none; }
+        li { position: relative; padding-left: 1.5rem; margin-bottom: 1rem; }
+        li:before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #3b82f6;
+            font-weight: bold;
+        }
+        .bg-slide-4 li:before, .bg-slide-5 li:before { color: #bfdbfe; }
+        a { color: #1d4ed8; text-decoration: underline; transition: color 0.3s; }
+        a:hover { color: #3b82f6; }
+        .bg-slide-4 a, .bg-slide-5 a { color: #bfdbfe; }
+        .bg-slide-4 a:hover, .bg-slide-5 a:hover { color: #ffffff; }
+        .bg-slide-1 h1, .bg-slide-2 h2, .bg-slide-3 h2 { color: #1e3a8a; }
+        .bg-slide-1 p, .bg-slide-2 li, .bg-slide-3 li { color: #1f2937; }
+        .bg-slide-4 h2, .bg-slide-5 h2, .bg-slide-4 li, .bg-slide-5 p { color: #f0f9ff; }
+        @keyframes fadeIn {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .slide:hover .content { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15); }
+        @media (max-width: 768px) {
+            .slide { padding: 2rem; }
+            .content { padding: 1.5rem; }
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            p, li { font-size: 1.1rem; }
+        }
     </style>
 </head>
-<body class="text-gray-800">
+<body>
     <!-- Slide 1: Introduction -->
-    <div class="slide bg-slide-1 text-center">
-        <h1 class="text-5xl font-bold text-sky-900 mb-4">Building Digital Credentials</h1>
-        <p class="text-2xl text-sky-700">A Smarter Approach to Ecosystems</p>
+    <div class="slide bg-slide-1">
+        <div class="content text-center">
+            <h1 class="mb-4">Building Digital Credentials</h1>
+            <p class="text-2xl">A Smarter Approach to Ecosystems</p>
+        </div>
     </div>
 
     <!-- Slide 2: Problems with Ecosystem Focus -->
     <div class="slide bg-slide-2">
-        <h2 class="text-4xl font-semibold text-sky-900 mb-6">Why Focusing on Ecosystems Doesn’t Work</h2>
-        <ul class="text-xl text-sky-800">
-            <li><strong>Too Many Credentials to Tackle:</strong> Industries like healthcare or finance have countless credentials—doctors, nurses, CPAs, and more. Trying to develop them all at once is a massive undertaking. It’s resource-intensive, hard to coordinate, and risks spreading us too thin, leading to weak, untrusted credentials.</li>
-            <li><strong>Constrains Opportunities:</strong> Planning an entire ecosystem upfront is like designing every detail of a house before laying the foundation. It locks us into a rigid scope, limiting flexibility and causing us to miss unexpected opportunities that could arise organically.</li>
-        </ul>
+        <div class="content">
+            <h2>Why Focusing on Ecosystems Doesn’t Work</h2>
+            <ul>
+                <li><strong>Too Many Credentials to Tackle:</strong> Industries like healthcare or finance have countless credentials—doctors, nurses, CPAs, and more. Trying to develop them all at once is a massive undertaking. It’s resource-intensive, hard to coordinate, and risks spreading us too thin, leading to weak, untrusted credentials.</li>
+                <li><strong>Constrains Opportunities:</strong> Planning an entire ecosystem upfront is like designing every detail of a house before laying the foundation. It locks us into a rigid scope, limiting flexibility and causing us to miss unexpected opportunities that could arise organically.</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Slide 3: Credential-First Approach -->
     <div class="slide bg-slide-3">
-        <h2 class="text-4xl font-semibold text-sky-900 mb-6">Recommendation: Start with Specific Credentials</h2>
-        <ul class="text-xl text-sky-800">
-            <li><strong>Build Trust and Quality:</strong> Focus on a few high-impact credentials, like a digital CPA certification. By putting all our effort into making them robust and trustworthy, we create a gold standard that people rely on. Trust drives adoption.</li>
-            <li><strong>Open More Doors:</strong> Strong credentials create ripple effects. A well-executed CPA credential could inspire demand in other sectors or lead to tech adaptations we hadn’t planned. This organic growth unlocks opportunities we can’t predict now.</li>
-        </ul>
+        <div class="content">
+            <h2>Recommendation: Start with Specific Credentials</h2>
+            <ul>
+                <li><strong>Build Trust and Quality:</strong> Focus on a few high-impact credentials, like a digital CPA certification. By putting all our effort into making them robust and trustworthy, we create a gold standard that people rely on. Trust drives adoption.</li>
+                <li><strong>Open More Doors:</strong> Strong credentials create ripple effects. A well-executed CPA credential could inspire demand in other sectors or lead to tech adaptations we hadn’t planned. This organic growth unlocks opportunities we can’t predict now.</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Slide 4: Credential Documentation -->
     <div class="slide bg-slide-4">
-        <h2 class="text-4xl font-semibold text-sky-900 mb-6">Credential Documentation: Building Trust</h2>
-        <ul class="text-xl text-sky-800">
-            <li><strong>Trusted Location:</strong> Documentation must reside in a secure, reputable platform to ensure credibility. For example, the <a href="https://bcgov.github.io/digital-trust-toolkit/docs/governance/person/person-cred-doc" class="underline text-sky-600">BC Gov’s Digital Trust Toolkit</a> provides a model for transparent, trusted documentation that stakeholders can rely on.</li>
-            <li><strong>Active Promotion:</strong> Documentation isn’t enough—it needs visibility. Actively share and promote it through channels like webinars, industry forums, and social media to build awareness and encourage adoption among users and organizations.</li>
-        </ul>
+        <div class="content">
+            <h2>Credential Documentation: Building Trust</h2>
+            <ul>
+                <li><strong>Trusted Location:</strong> Documentation must reside in a secure, reputable platform to ensure credibility. For example, the <a href="https://bcgov.github.io/digital-trust-toolkit/docs/governance/person/person-cred-doc">BC Gov’s Digital Trust Toolkit</a> provides a model for transparent, trusted documentation that stakeholders can rely on.</li>
+                <li><strong>Active Promotion:</strong> Documentation isn’t enough—it needs visibility. Actively share and promote it through channels like webinars, industry forums, and social media to build awareness and encourage adoption among users and organizations.</li>
+            </ul>
+        </div>
     </div>
 
     <!-- Slide 5: Call to Action -->
-    <div class="slide bg-slide-5 text-center">
-        <h2 class="text-4xl font-semibold text-white mb-6">Let’s Build Smarter</h2>
-        <p class="text-2xl text-sky-100 mb-4">Start with trusted credentials, document them well, and let growth happen naturally.</p>
-        <p class="text-xl text-sky-200">What do you think? Let’s discuss!</p>
+    <div class="slide bg-slide-5">
+        <div class="content text-center">
+            <h2>Let’s Build Smarter</h2>
+            <p class="text-2xl mb-4">Start with trusted credentials, document them well, and let growth happen naturally.</p>
+            <p class="text-xl">What do you think? Let’s discuss!</p>
+        </div>
     </div>
 
     <script>
-        // Smooth slide navigation
+        // Smooth slide navigation with mouse wheel and keyboard
+        let scrolling = false;
+        window.addEventListener('wheel', (e) => {
+            if (scrolling) return;
+            scrolling = true;
+            setTimeout(() => scrolling = false, 600);
+            const delta = e.deltaY > 0 ? window.innerHeight : -window.innerHeight;
+            window.scrollBy({ top: delta, behavior: 'smooth' });
+        });
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
+            if (scrolling) return;
+            scrolling = true;
+            setTimeout(() => scrolling = false, 600);
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
                 window.scrollBy({ top: window.innerHeight, behavior: 'smooth' });
-            } else if (e.key === 'ArrowLeft') {
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
                 window.scrollBy({ top: -window.innerHeight, behavior: 'smooth' });
             }
         });
